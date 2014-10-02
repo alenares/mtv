@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Mapping the Village</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	
+    <!-- leaflet core CSS -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/index.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- header -->
+        <div class="header">
+            
+            <h2 class="text-muted">Mapping the Village</h2>
+            <h4 class="text-muted">The mapping application of Raising the Village</h4>
+        </div>
+        <!-- villages navbar -->
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" >Villages</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a id="murole-tab" href="" data-toggle="tab">Murole</a></li>
+                    <li><a id="rushabarara-tab" href="" data-toggle="tab">Rushabarara</a></li>
+                    <li><a id="kanyamahene-tab" href="" data-toggle="tab">Kanyamahene</a></li>
+                    <li><a id="nanga-tab" href="" data-toggle="tab">Nanga (Grace)</a></li>
+                    <li><a id="kagezi-tab" href="" data-toggle="tab">Kagezi</a></li>
+                    <li><a id="bitongo-tab" href="" data-toggle="tab">Bitongo</a></li>
+                    <li><a id="ssanga-tab" href="" data-toggle="tab">Ssanga</a></li>
+                    <li><a id="kanga-tab" href="" data-toggle="tab">Kanga</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="map" class="map" style="height: 500px"></div>
+        <form enctype="multipart/form-data" method="post" action="import">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit"/>
+        </form>
+        {% if err_msg %}
+            <b><i>{{ err_msg }}</i></b>
+        {% endif %}
+    </div><!-- /.container -->
+    
+    <!-- JavaScript placed at the end of the document so the pages load faster -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!-- Bootstrap core -->
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- leaflet -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+    <!-- map funtions -->
+    <script src="/static/js/map.js"></script>
+<!-- Custom JavaScript -->
+<script>
+    <!-- Calls the function to initialize the map on Murole -->
+    initmap();
+    
+    $('#murole-tab').click(function (e) {
+        setmap("murole")
+    })
+    $('#rushabarara-tab').click(function (e) {
+        setmap("rushabarara")
+    })
+    $('#kanyamahene-tab').click(function (e) {
+        setmap("kanyamahene")
+    })
+    $('#nanga-tab').click(function (e) {
+        setmap("nanga")
+    })
+    $('#kagezi-tab').click(function (e) {
+        setmap("kagezi")
+    })
+    $('#bitongo-tab').click(function (e) {
+        setmap("bitongo")
+    })
+    $('#ssanga-tab').click(function (e) {
+        setmap("ssanga")
+    })
+    $('#kanga-tab').click(function (e) {
+        setmap("kanga")
+    })
+
+</script>
+</body>
+</html>
